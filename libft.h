@@ -6,7 +6,7 @@
 /*   By: mspyke <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/09 22:11:58 by mspyke            #+#    #+#             */
-/*   Updated: 2020/11/10 18:38:33 by mspyke           ###   ########.fr       */
+/*   Updated: 2020/11/14 17:02:24 by mspyke           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,5 +81,7 @@ void				ft_lstclear(t_list **lst, void (*del)(void *));
 void				ft_lstiter(t_list *lst, void (*f)(void *));
 t_list				*ft_lstmap(t_list *lst, void *(*f)(void *),
 								void(*del)(void *));
+char				*ft_strcpy(char *dst, const char *src);
+char				*ft_strncpy(char *dst, const char *src, size_t len);
 
 #endif

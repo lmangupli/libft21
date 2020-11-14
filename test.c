@@ -116,7 +116,7 @@ int main(void)
 	printf("src = '%s'\nmemmove(src + 4, src, 4) -> %s | ft_memmove(src + 4, src, 4)    -> %s\n", src, memmove(src + 4, src, 4), ft_memmove(src1 + 4, src1, 4));
 */
 
-
+/*
 //ft_substr
 	printf("====FT_SUBSTR====\n");
 	printf("void    *ft_substr(char const *s, unsigned int start, size_t len)\n\n");
@@ -127,7 +127,7 @@ int main(void)
 	char *str;
 	str = ft_substr(s, start, len);
 	printf("string is -> '%s'\nsubstring is -> '%s'\n", s, str);
-
+*/
 
 /*
 	//ft_strjoin
@@ -207,6 +207,23 @@ int main(void)
 	str = ft_calloc(count, size);
 	printf("%s\n", str);
 */	
+	
+/*
+	//strcpy
+	char src[] = "elizaveta";
+	char dst[10];
+	char dst1[10];
+	printf("src -> '%s'\nstrcpy(src, dst) -> '%s'\n", src, strcpy(dst, src));
+	printf("src -> '%s'\nft_strcpy(src, dst) -> '%s'\n", src, ft_strcpy(dst1, src));
+*/
+
+	//strncpy
+	char src[] = "elizaveta";
+	char dst[10];
+	char dst1[10];
+	size_t len = 10;
+	//printf("src -> '%s' len = %zu\nstrncpy(src, dst) -> '%s'\n", src, len, strncpy(dst, src, len));
+	printf("src -> '%s' len = %zu\nft_strncpy(src, dst, len) -> '%s'\n", src, len, ft_strncpy(dst1, src, len));
 	
 	
 	return(0);
