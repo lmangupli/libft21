@@ -6,7 +6,7 @@
 /*   By: mspyke <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/14 17:09:01 by mspyke            #+#    #+#             */
-/*   Updated: 2020/11/14 17:29:10 by mspyke           ###   ########.fr       */
+/*   Updated: 2020/11/30 19:51:34 by mspyke           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ char	*ft_strncpy(char *dst, const char *src, size_t len)
 {
 	size_t	i;
 
+	if (!dst || !src)
+		return (NULL);
 	i = 0;
 	while (src[i] && i < len)
 	{
