@@ -6,7 +6,7 @@
 #    By: mspyke <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/03 20:18:10 by mspyke            #+#    #+#              #
-#    Updated: 2020/11/25 21:28:03 by mspyke           ###   ########.fr        #
+#    Updated: 2020/12/04 17:18:12 by mspyke           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -75,7 +75,8 @@ SRC =	ft_atoi.c \
 		ft_strcpy.c \
 		ft_strncpy.c \
 		ft_strnew.c \
-		ft_strclr.c
+		ft_strclr.c \
+		ft_putunbr.c
 
 OBJ = $(SRC:.c=.o)
 
