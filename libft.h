@@ -6,7 +6,7 @@
 /*   By: mspyke <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/09 22:11:58 by mspyke            #+#    #+#             */
-/*   Updated: 2020/12/04 17:18:53 by mspyke           ###   ########.fr       */
+/*   Updated: 2020/12/05 16:55:22 by mspyke           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,5 +86,6 @@ char				*ft_strncpy(char *dst, const char *src, size_t len);
 char				*ft_strnew(size_t size);
 void				ft_strclr(char *s);
 void				ft_putunbr(uintmax_t n);
+char				*ft_str_to_upper(char *str);
 
 #endif
