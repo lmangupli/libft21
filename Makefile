@@ -10,102 +10,76 @@
 #                                                                              #
 # **************************************************************************** #
 
-CC = gcc
+# Compilation #
 
 FLAGS = -Wall -Wextra -Werror
+ASM_FLAGS = -f macho64
 
-RM = rm -f
+# Directories #
+
+SRCS_DIR = ./srcs/
+OBJS_DIR = ./objs/
+GNL_DIR = ./gnl/
+ASM_DIR = ./libasm/
+
+INC_DIR = ./includes/
+INC_ASM = $(INC_DIR)libasm.h
+INC_LIBFT = $(INC_DIR)libft.h $(INC_ASM)
+INC_GNL = $(INC_DIR)get_next_line.h
+LINK_INC = -I $(INC_DIR)
+
+# Source files #
 
 NAME = libft.a
 
-HEADER = libft.h
-
-SRC =	ft_atoi.c \
-	  	ft_bzero.c \
-		ft_calloc.c \
-		ft_isalnum.c \
-		ft_isalpha.c \
-		ft_isascii.c \
-		ft_isdigit.c \
-		ft_islower.c \
-		ft_isprint.c \
-		ft_isspace.c \
-		ft_isupper.c \
-		ft_itoa.c \
+SRCS =	ft_atoi.c ft_bzero.c ft_calloc.c ft_isalnum.c ft_isalpha.c ft_isascii.c \
+		ft_isdigit.c ft_islower.c ft_isprint.c ft_isspace.c ft_isupper.c ft_itoa.c \
 		\
-		ft_memccpy.c \
-		ft_memchr.c \
-		ft_memcmp.c \
-		ft_memcpy.c \
-		ft_memmove.c \
-		ft_memset.c \
+		ft_memccpy.c  ft_memchr.c ft_memcmp.c ft_memcpy.c ft_memmove.c ft_memset.c \
 		\
-		ft_putchar.c \
-		ft_putchar_fd.c \
-		ft_putstr.c \
-		ft_putstr_fd.c \
-		ft_putendl.c \
-        ft_putendl_fd.c \
-        ft_putnbr.c \
-        ft_putnbr_fd.c \
-        ft_putunbr.c \
+		ft_putchar.c ft_putchar_fd.c ft_putstr.c ft_putstr_fd.c ft_putendl.c ft_putendl_fd.c \
+        ft_putnbr.c ft_putnbr_fd.c ft_putunbr.c \
         \
-        ft_split.c \
-        ft_str_to_upper.c \
-        ft_strcmp.c \
-        ft_strcpy.c \
-        ft_strncpy.c \
-        ft_strndup.c \
-        ft_strnew.c \
-        ft_strnlen.c \
-		ft_strchr.c \
-		ft_strjoin.c \
-		ft_strlcpy.c \
-		ft_strclr.c \
-		ft_strdup.c \
-		ft_strlcat.c \
-		ft_strlen.c \
-		ft_strncmp.c \
-		ft_strnstr.c \
-		ft_strrchr.c \
-		ft_tolower.c \
-		ft_toupper.c \
-		ft_substr.c \
-		ft_strtrim.c \
-		ft_strmapi.c \
-		ft_strrev.c \
+        ft_split.c ft_str_to_upper.c ft_strcmp.c ft_strncpy.c ft_strndup.c ft_strnew.c \
+        ft_strnlen.c ft_strchr.c ft_strjoin.c ft_strlcpy.c ft_strclr.c ft_strlcat.c ft_strncmp.c \
+		ft_strnstr.c ft_strrchr.c ft_tolower.c ft_toupper.c ft_substr.c ft_strtrim.c ft_strmapi.c ft_strrev.c \
 		\
-		ft_lstnew.c \
-		ft_lstadd_front.c \
-		ft_lstsize.c \
-		ft_lstlast.c \
-		ft_lstadd_back.c \
-		ft_lstdelone.c \
-		ft_lstclear.c \
-		ft_lstiter.c \
-		ft_lstmap.c \
+		ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c ft_lstadd_back.c ft_lstdelone.c \
+		ft_lstclear.c ft_lstiter.c ft_lstmap.c
 
+SRCS_GNL = get_next_line.c get_next_line_utils.c
 
+SRCS_ASM = ft_read.s ft_strcmp.s ft_strcpy.s ft_strdup.s ft_strlen.s ft_write.s
 
+# Object files #
 
-
-
-OBJ = $(SRC:.c=.o)
+OBJS_LIBFT = ${SRCS:.c=.o}
+OBJS_GNL = ${SRCS_GNL:.c=.o}
+OBJS_ASM = ${SRCS_ASM:.s=.o}
+OBJS = $(addprefix $(OBJS_DIR), $(OBJS_LIBFT) $(OBJS_GNL) $(OBJS_ASM))
 
 all: $(NAME)
 
-$(NAME): $(OBJ)
-	ar rc $(NAME) $(OBJ)
-	ranlib $(NAME)
+$(NAME): $(OBJS)
+	ar rc $@ $(OBJS)
+	ranlib $@
+	@echo "\033[32m$@ successfully created\033[0m" ✅
 
-%.o: %.c $(HEADER) 
-	gcc $(FLAGS) -c $< -o $@
+$(OBJS_DIR)%.o: $(SRCS_DIR)%.c $(INC_LIBFT)
+	@mkdir -p $(OBJS_DIR)
+	gcc $(FLAGS) $(LINK_INC) -c $< -o $@
 
-clean: 
-	$(RM) $(OBJ)
+$(OBJS_DIR)%.o: $(GNL_DIR)%.c $(INC_GNL)
+	gcc $(FLAGS) $(LINK_INC) -c $< -o $@
+
+$(OBJS_DIR)%.o: $(ASM_DIR)%.s $(INC_ASM)
+	nasm $(ASM_FLAGS) $(LINK_INC) -s $< -o $@
+
+clean:
+	rm -rf $(OBJS_DIR)
 
 fclean: clean
-	$(RM) $(NAME)
+	rm -f $(NAME)
 
 re: fclean all
 
