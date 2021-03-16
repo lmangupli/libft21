@@ -12,14 +12,14 @@
 
 #include "libft.h"
 
-char *ft_str_to_upper(char *str)
+char	*ft_str_to_upper(char *str)
 {
 	int i;
 
 	i = 0;
 	if (str)
 	{
-		while(str[i])
+		while (str[i])
 		{
 			if (ft_islower(str[i]))
 				str[i] = ft_toupper(str[i]);

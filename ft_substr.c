@@ -21,7 +21,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	if (s == NULL)
 		return (NULL);
 	slen = ft_strlen(s);
-	if (start >= slen)
+	if (start >= slen || len == 0)
 		return (ft_strdup(""));
 	if ((slen - start) < len)
 		len = slen - start;

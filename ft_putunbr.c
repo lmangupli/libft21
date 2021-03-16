@@ -19,11 +19,11 @@ void	ft_putunbr(uintmax_t n)
 	if (n < 10)
 	{
 		c = n + '0';
-		ft_putchar (c);
+		ft_putchar(c);
 	}
 	else
 	{
 		ft_putunbr(n / 10);
-		ft_putunbr(n % 10);;
+		ft_putunbr(n % 10);
 	}
 }
