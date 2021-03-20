@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_numlen.c                                        :+:      :+:    :+:   */
+/*   ft_realloc.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mspyke <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,22 +10,20 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../includes/libft.h"
 
-int		ft_numlen(long nb)
+void	*ft_realloc(void *ptr, size_t newsize)
 {
-	int len;
+	char	*newptr;
+	size_t	cursize;
 
-	len = 0;
-	if (nb < 0)
-	{
-		nb = nb * -1;
-		len++;
-	}
-	while (nb > 0)
-	{
-		nb = nb / 10;
-		len++;
-	}
-	return (len);
+	if (ptr == 0)
+		return (malloc(newsize));
+	cursize = sizeof(ptr);
+	if (newsize <= cursize)
+		return (ptr);
+	newptr = malloc(newsize);
+	ft_memcpy(ptr, newptr, cursize);
+	free(ptr);
+	return (newptr);
 }

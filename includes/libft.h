@@ -86,6 +86,7 @@ void				ft_strclr(char *s);
 void				ft_putunbr(uintmax_t n);
 char				*ft_str_to_upper(char *str);
 void				ft_putendl(char *s);
-int					ft_numlen(long nb);t
+int					ft_numlen(long nb);
+void				*ft_realloc(void *ptr, size_t newsize);
 
 #endif
