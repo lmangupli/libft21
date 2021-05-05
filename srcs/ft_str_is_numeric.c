@@ -1,24 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnew.c                                        :+:      :+:    :+:   */
+/*   ft_str_is_numeric.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mspyke <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/14 18:42:44 by mspyke            #+#    #+#             */
-/*   Updated: 2020/11/14 18:45:21 by mspyke           ###   ########.fr       */
+/*   Created: 2021/04/10 15:48:33 by mspyke            #+#    #+#             */
+/*   Updated: 2021/04/10 17:00:12 by mspyke           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libft.h"
 
-char	*ft_strnew(size_t size)
+int	ft_str_is_numeric(char *str)
 {
-	char	*str;
+	int	i;
 
-	str = (char *)malloc(sizeof(char) * (size + 1));
-	if (NULL == str)
-		return (NULL);
-	ft_bzero(str, size + 1);
-	return (str);
+	i = -1;
+	if (str[0] == '\0')
+		return (0);
+	while (str[++i])
+	{
+		if (!ft_isdigit(str[i]))
+			return (0);
+	}
+	return (1);
 }
