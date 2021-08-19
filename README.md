@@ -6,8 +6,8 @@ The projects helps to build stronger algorithmic skills, better understating of 
 
 ## How to use
 
-Just type:
+Clone the repo and just type:
 ```
 make
 ```
-amd hit enter. And the library compiled!
+Hit enter and voi-la! The library compiled.
