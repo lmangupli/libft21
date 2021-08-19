@@ -1,4 +1,4 @@
-# 42_libft
+Libft
 First project of School 21. Creating my own first library.
 
 I recoded a few functions of the C standard library as well as some other utility functions.
