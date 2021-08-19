@@ -10,4 +10,4 @@ Clone the repo and just type:
 ```
 make
 ```
-Hit enter and voi-la! The library compiled.
+Hit enter and voila! The library compiled.
